@@ -1,0 +1,12 @@
+.nav {
+  grid-area: nav;
+  background-color: lightgreen;
+}
+
+.item {
+  background-color: lightblue;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 0.5em;
+  text-align: center;
+}
