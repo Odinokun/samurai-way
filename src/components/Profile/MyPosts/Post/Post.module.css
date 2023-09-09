@@ -1,6 +1,6 @@
 .item {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
   padding: 1em;
 }
 
@@ -8,7 +8,7 @@
   width: 40px;
   height: 40px;
   flex: none;
-  margin-right: 1em;
+  margin-right: 20px;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -19,4 +19,14 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.message {
+  display: block;
+  width: calc(100% - 60px);
+}
+
+.footer {
+  width: 100%;
+  margin-top: 8px;
 }

@@ -15,9 +15,9 @@ export const MyPosts: FC<IProps> = () => {
       </div>
 
       <div className={s.posts}>
-        <Post />
-        <Post />
-        <Post />
+        <Post message='Lorem ipsum dolor sit amet consectetur adipisicing elit. ' />
+        <Post message='Have a nice day!' />
+        <Post message='Guten Morgen tvari' />
       </div>
     </div>
   );
