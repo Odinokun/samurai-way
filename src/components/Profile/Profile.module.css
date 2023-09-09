@@ -14,15 +14,3 @@
   object-fit: cover;
   object-position: center;
 }
-
-.posts {
-  border-top: 1px solid #121212;
-}
-
-.item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1em;
-}
