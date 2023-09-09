@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
 import s from './Post.module.css';
 
-interface IProps {}
+interface IProps {
+  message: string;
+}
 
-export const Post: FC<IProps> = () => {
+export const Post: FC<IProps> = ({ message }) => {
   return (
     <div className={s.item}>
       <div className={s.avatar}>
@@ -12,16 +14,11 @@ export const Post: FC<IProps> = () => {
           alt='user'
         />
       </div>
-      <span>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit fugiat,
-        delectus, ex reiciendis consectetur earum nobis eveniet possimus nemo
-        nostrum ut aspernatur architecto odit modi quod, non facere tempora?
-        Magnam ea esse accusamus exercitationem voluptates cum sunt hic dolorum,
-        minus neque nulla! Necessitatibus ab quis placeat, molestias dicta
-        assumenda doloribus.
-      </span>
-      <button>like</button>
-      <button>dislike</button>
+      <span className={s.message}>{message}</span>
+      <div className={s.footer}>
+        <button>like</button>
+        <button>dislike</button>
+      </div>
     </div>
   );
 };
