@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { NavLink } from 'react-router-dom';
 import s from './Navbar.module.css';
 
 interface IProps {}
@@ -7,19 +8,29 @@ export const Navbar: FC<IProps> = () => {
   return (
     <nav className={s.nav}>
       <div className={s.item}>
-        <a href='/'>Profile</a>
+        <NavLink to='/profile' activeClassName={s.active}>
+          Profile
+        </NavLink>
       </div>
       <div className={s.item}>
-        <a href='/'>Messages</a>
+        <NavLink to='/dialogs' activeClassName={s.active}>
+          Messages
+        </NavLink>
       </div>
       <div className={s.item}>
-        <a href='/'>News</a>
+        <NavLink to='/news' activeClassName={s.active}>
+          News
+        </NavLink>
       </div>
       <div className={s.item}>
-        <a href='/'>Music</a>
+        <NavLink to='/music' activeClassName={s.active}>
+          Music
+        </NavLink>
       </div>
       <div className={s.item}>
-        <a href='/'>Settings</a>
+        <NavLink to='/settings' activeClassName={s.active}>
+          Settings
+        </NavLink>
       </div>
     </nav>
   );
