@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .app-wrapper {
   display: grid;
   grid-template-areas:
@@ -13,3 +19,7 @@
   grid-area: content;
   background-color: lightblue;
 }
+
+/* a.active {
+  color: tomato;
+} */
