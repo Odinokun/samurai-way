@@ -1,12 +1,29 @@
 .nav {
   grid-area: nav;
   background-color: lightgreen;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .item {
-  background-color: lightblue;
-  padding: 1em;
-  margin: 1em;
+  background-color: darkgreen;
+  margin: 1em 0 0 0;
   border-radius: 0.5em;
   text-align: center;
+  width: calc(100% - 20px);
+}
+
+.item a {
+  padding: 1em;
+  width: 100%;
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  user-select: none;
+  font-weight: bold;
+}
+
+a.active {
+  color: tomato;
 }

@@ -1,6 +1,7 @@
 .header {
   grid-area: header;
   background-color: tomato;
+  padding: 10px;
 }
 
 .header img {
@@ -9,5 +10,4 @@
   height: 40px;
   object-fit: cover;
   object-position: center;
-  padding: 10px;
 }
