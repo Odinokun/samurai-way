@@ -18,6 +18,17 @@
   margin-bottom: 10px;
 }
 
+.dialog a {
+  text-decoration: none;
+  color: darkgreen;
+  font-size: 20px;
+}
+
+.dialog .active {
+  color: tomato;
+  font-weight: bold;
+}
+
 .messages {
   display: flex;
   flex-direction: column;

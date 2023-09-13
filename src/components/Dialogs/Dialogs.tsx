@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import s from './Dialogs.module.css';
+import { NavLink } from 'react-router-dom';
 
 interface IProps {}
 
@@ -7,11 +8,31 @@ export const Dialogs: FC<IProps> = () => {
   return (
     <div className={s.dialogs}>
       <div className={s.dialogsItems}>
-        <div className={s.dialog}>Dimon</div>
-        <div className={s.dialog}>Olcha</div>
-        <div className={s.dialog}>Maryna</div>
-        <div className={s.dialog}>Margo</div>
-        <div className={s.dialog}>Luba</div>
+        <div className={s.dialog}>
+          <NavLink to='/dialogs/1' activeClassName={s.active}>
+            Dimon
+          </NavLink>
+        </div>
+        <div className={s.dialog}>
+          <NavLink to='/dialogs/2' activeClassName={s.active}>
+            Olcha
+          </NavLink>
+        </div>
+        <div className={s.dialog}>
+          <NavLink to='/dialogs/3' activeClassName={s.active}>
+            Maryna
+          </NavLink>
+        </div>
+        <div className={s.dialog}>
+          <NavLink to='/dialogs/4' activeClassName={s.active}>
+            Margo
+          </NavLink>
+        </div>
+        <div className={s.dialog}>
+          <NavLink to='/dialogs/5' activeClassName={s.active}>
+            Luba
+          </NavLink>
+        </div>
       </div>
       <div className={s.messages}>
         <div className={s.message}>Hello world</div>
