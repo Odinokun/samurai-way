@@ -1,0 +1,42 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  height: 100%;
+}
+.dialogsItems {
+  display: flex;
+  flex-direction: column;
+  border: 3px dotted black;
+  margin-right: 10px;
+  padding: 10px;
+  flex: none;
+}
+
+.dialog {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  border: 3px dotted black;
+  padding: 10px;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 65%;
+  background-color: lightyellow;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.message:nth-child(odd) {
+  background-color: lightgreen;
+  margin-left: auto;
+  text-align: right;
+}
