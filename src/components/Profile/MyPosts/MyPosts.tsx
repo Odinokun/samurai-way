@@ -1,11 +1,19 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
+
 import { Post } from './Post/Post';
+
 import s from './MyPosts.module.css';
+
+interface IPostType {
+  id: number;
+  message: string;
+  likesCount: number;
+}
 
 interface IProps {}
 
 export const MyPosts: FC<IProps> = () => {
-  const postsData = [
+  const postsData: IPostType[] = [
     { id: 1, message: 'Hello world', likesCount: 12 },
     { id: 2, message: 'Lorem ipsum dolor sit amet.', likesCount: 11 },
     {
@@ -27,24 +35,21 @@ export const MyPosts: FC<IProps> = () => {
       likesCount: 11,
     },
   ];
+
+  const postsElements = postsData.map(post => (
+    <Post key={post.id} message={post.message} likesCount={post.likesCount} />
+  ));
+
   return (
     <div>
-      <h3>my posts</h3>
+      <h3>My posts</h3>
 
       <div>
         <textarea placeholder='new post'></textarea>
         <button>Add new post</button>
       </div>
 
-      <div className={s.posts}>
-        {postsData.map(post => (
-          <Post
-            key={post.id}
-            message={post.message}
-            likesCount={post.likesCount}
-          />
-        ))}
-      </div>
+      <div className={s.posts}>{postsElements}</div>
     </div>
   );
 };
