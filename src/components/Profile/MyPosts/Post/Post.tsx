@@ -3,9 +3,10 @@ import s from './Post.module.css';
 
 interface IProps {
   message: string;
+  likesCount: number;
 }
 
-export const Post: FC<IProps> = ({ message }) => {
+export const Post: FC<IProps> = ({ message, likesCount }) => {
   return (
     <div className={s.item}>
       <div className={s.avatar}>
@@ -16,6 +17,9 @@ export const Post: FC<IProps> = ({ message }) => {
       </div>
       <span className={s.message}>{message}</span>
       <div className={s.footer}>
+        <span className={s.likesCount}>
+          likes: <b>{likesCount} </b>
+        </span>
         <button>like</button>
         <button>dislike</button>
       </div>
