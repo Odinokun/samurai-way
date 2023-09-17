@@ -1,14 +1,17 @@
 import { FC } from 'react';
 import { MyPosts } from './MyPosts/MyPosts';
 import { ProfileInfo } from './MyPosts/Post/ProfileInfo/ProfileInfo';
+import { IPost, IProfilePage } from '../../redux/types';
 
-interface IProps {}
+interface IProps {
+  state: IProfilePage;
+}
 
-export const Profile: FC<IProps> = () => {
+export const Profile: FC<IProps> = ({ state }) => {
   return (
     <div>
       <ProfileInfo />
-      <MyPosts />
+      <MyPosts posts={state.postsData} />
     </div>
   );
 };
