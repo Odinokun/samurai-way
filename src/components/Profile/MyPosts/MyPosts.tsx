@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { createRef, FC } from 'react';
 
 import { Post } from './Post/Post';
 
@@ -10,19 +10,24 @@ interface IProps {
 }
 
 export const MyPosts: FC<IProps> = ({ posts }) => {
-  const postsElements = posts.map(post => (
-    <Post key={post.id} message={post.message} likesCount={post.likesCount} />
-  ));
-
+  const postsElements = posts.map(post => <Post key={post.id} message={post.message} likesCount={post.likesCount} />);
+  
+  const newPostElement = createRef<HTMLTextAreaElement>();
+  
+  const addPost = () => {
+    const text = newPostElement.current?.value;
+    console.log('My Posts click => ', text);
+  };
+  
   return (
     <div>
       <h3>My posts</h3>
-
+      
       <div>
-        <textarea placeholder='new post'></textarea>
-        <button>Add new post</button>
+        <textarea ref={newPostElement} placeholder="new post"></textarea>
+        <button onClick={addPost}>Add new post</button>
       </div>
-
+      
       <div className={s.posts}>{postsElements}</div>
     </div>
   );
