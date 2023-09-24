@@ -7,16 +7,18 @@ import s from './MyPosts.module.css';
 
 interface IProps {
   posts: IPost[];
+  addPost: (postText: string) => void;
 }
 
-export const MyPosts: FC<IProps> = ({ posts }) => {
+export const MyPosts: FC<IProps> = ({ posts, addPost }) => {
   const postsElements = posts.map(post => <Post key={post.id} message={post.message} likesCount={post.likesCount} />);
   
   const newPostElement = createRef<HTMLTextAreaElement>();
   
-  const addPost = () => {
+  const addPostHandler = () => {
     const text = newPostElement.current?.value;
-    console.log('My Posts click => ', text);
+    addPost(text || '');
+    console.log('My Posts click => ', posts);
   };
   
   return (
@@ -25,7 +27,7 @@ export const MyPosts: FC<IProps> = ({ posts }) => {
       
       <div>
         <textarea ref={newPostElement} placeholder="new post"></textarea>
-        <button onClick={addPost}>Add new post</button>
+        <button onClick={addPostHandler}>Add new post</button>
       </div>
       
       <div className={s.posts}>{postsElements}</div>

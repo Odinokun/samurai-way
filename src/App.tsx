@@ -13,26 +13,27 @@ import './App.css';
 
 interface IProps {
   state: IState;
+  addPost: (postText: string) => void;
 }
 
-export const App = ({ state }: IProps) => {
+export const App = ({ state, addPost }: IProps) => {
   return (
     <BrowserRouter>
-      <div className='app-wrapper'>
+      <div className="app-wrapper">
         <Header />
         <Navbar />
-        <div className='app-wrapper-content'>
+        <div className="app-wrapper-content">
           <Route
-            path='/profile'
-            render={() => <Profile state={state.profilePage} />}
+            path="/profile"
+            render={() => <Profile state={state.profilePage} addPost={addPost} />}
           />
           <Route
-            path='/dialogs'
+            path="/dialogs"
             render={() => <Dialogs state={state.dialogsPage} />}
           />
-          <Route path='/news' render={() => <News />} />
-          <Route path='/music' render={() => <Music />} />
-          <Route path='/settings' render={() => <Settings />} />
+          <Route path="/news" render={() => <News />} />
+          <Route path="/music" render={() => <Music />} />
+          <Route path="/settings" render={() => <Settings />} />
         </div>
       </div>
     </BrowserRouter>

@@ -1,4 +1,4 @@
-import { IState } from './types';
+import { IPost, IState } from './types';
 
 export const state: IState = {
   dialogsPage: {
@@ -21,8 +21,17 @@ export const state: IState = {
     postsData: [
       { id: 1, message: 'Hi, how are you?', likesCount: 12 },
       { id: 2, message: "It's my first post", likesCount: 11 },
-      { id: 3, message: 'Blabla', likesCount: 11 },
+      { id: 3, message: 'Adidas vs Puma', likesCount: 11 },
       { id: 4, message: 'Dada', likesCount: 11 },
     ],
   },
+};
+
+export const addPost = (postMessage: string) => {
+  const newPost: IPost = {
+    id: 5,
+    message: postMessage,
+    likesCount: 0,
+  };
+  state.profilePage.postsData.push(newPost);
 };
