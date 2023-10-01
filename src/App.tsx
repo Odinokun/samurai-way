@@ -1,4 +1,4 @@
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import { Header } from './components/Header/Header';
 import { Navbar } from './components/Navbar/Navbar';
@@ -18,24 +18,22 @@ interface IProps {
 
 export const App = ({ state, addPost }: IProps) => {
   return (
-    <BrowserRouter>
-      <div className="app-wrapper">
-        <Header />
-        <Navbar />
-        <div className="app-wrapper-content">
-          <Route
-            path="/profile"
-            render={() => <Profile state={state.profilePage} addPost={addPost} />}
-          />
-          <Route
-            path="/dialogs"
-            render={() => <Dialogs state={state.dialogsPage} />}
-          />
-          <Route path="/news" render={() => <News />} />
-          <Route path="/music" render={() => <Music />} />
-          <Route path="/settings" render={() => <Settings />} />
-        </div>
+    <div className="app-wrapper">
+      <Header />
+      <Navbar />
+      <div className="app-wrapper-content">
+        <Route
+          path="/profile"
+          render={() => <Profile state={state.profilePage} addPost={addPost} />}
+        />
+        <Route
+          path="/dialogs"
+          render={() => <Dialogs state={state.dialogsPage} />}
+        />
+        <Route path="/news" render={() => <News />} />
+        <Route path="/music" render={() => <Music />} />
+        <Route path="/settings" render={() => <Settings />} />
       </div>
-    </BrowserRouter>
+    </div>
   );
 };
