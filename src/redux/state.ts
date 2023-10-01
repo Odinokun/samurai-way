@@ -1,4 +1,5 @@
 import { IPost, IState } from './types';
+import { rerenderEntireTree } from '../render';
 
 export const state: IState = {
   dialogsPage: {
@@ -33,5 +34,6 @@ export const addPost = (postMessage: string) => {
     message: postMessage,
     likesCount: 0,
   };
+  rerenderEntireTree({ state });
   state.profilePage.postsData.push(newPost);
 };

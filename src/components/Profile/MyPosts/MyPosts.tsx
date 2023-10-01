@@ -18,7 +18,7 @@ export const MyPosts: FC<IProps> = ({ posts, addPost }) => {
   const addPostHandler = () => {
     const text = newPostElement.current?.value;
     addPost(text || '');
-    console.log('My Posts click => ', posts);
+    newPostElement.current!.value = '';
   };
   
   return (
