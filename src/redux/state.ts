@@ -19,21 +19,28 @@ export const state: IState = {
     ],
   },
   profilePage: {
-    postsData: [
+    posts: [
       { id: 1, message: 'Hi, how are you?', likesCount: 12 },
       { id: 2, message: "It's my first post", likesCount: 11 },
       { id: 3, message: 'Adidas vs Puma', likesCount: 11 },
       { id: 4, message: 'Dada', likesCount: 11 },
     ],
+    newPostText: '',
   },
 };
 
-export const addPost = (postMessage: string) => {
+export const addPost = () => {
   const newPost: IPost = {
     id: 5,
-    message: postMessage,
+    message: state.profilePage.newPostText,
     likesCount: 0,
   };
   rerenderEntireTree({ state });
-  state.profilePage.postsData.push(newPost);
+  state.profilePage.newPostText = '';
+  state.profilePage.posts.push(newPost);
+};
+
+export const updateNewPostText = (newText: string) => {
+  state.profilePage.newPostText = newText;
+  rerenderEntireTree({ state });
 };
