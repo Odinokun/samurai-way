@@ -7,15 +7,15 @@ import { IDialogsPage } from '../../redux/types';
 import s from './Dialogs.module.css';
 
 interface IProps {
-  state: IDialogsPage;
+  dialogsPage: IDialogsPage;
 }
 
-export const Dialogs: FC<IProps> = ({ state }) => {
-  const dialogsElements = state.dialogsData.map(dialog => (
+export const Dialogs: FC<IProps> = ({ dialogsPage }) => {
+  const dialogsElements = dialogsPage.dialogsData.map(dialog => (
     <DialogItem key={dialog.id} id={dialog.id} name={dialog.name} />
   ));
   
-  const messagesElements = state.messagesData.map(message => (
+  const messagesElements = dialogsPage.messagesData.map(message => (
     <Message key={message.id} message={message.message} />
   ));
   

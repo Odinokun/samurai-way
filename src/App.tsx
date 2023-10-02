@@ -14,9 +14,10 @@ import './App.css';
 interface IProps {
   state: IState;
   addPost: (postText: string) => void;
+  updateNewPostText: (newText: string) => void;
 }
 
-export const App = ({ state, addPost }: IProps) => {
+export const App = ({ state, addPost, updateNewPostText }: IProps) => {
   return (
     <div className="app-wrapper">
       <Header />
@@ -24,11 +25,15 @@ export const App = ({ state, addPost }: IProps) => {
       <div className="app-wrapper-content">
         <Route
           path="/profile"
-          render={() => <Profile state={state.profilePage} addPost={addPost} />}
+          render={() => <Profile
+            profilePage={state.profilePage}
+            addPost={addPost}
+            updateNewPostText={updateNewPostText}
+          />}
         />
         <Route
           path="/dialogs"
-          render={() => <Dialogs state={state.dialogsPage} />}
+          render={() => <Dialogs dialogsPage={state.dialogsPage} />}
         />
         <Route path="/news" render={() => <News />} />
         <Route path="/music" render={() => <Music />} />
