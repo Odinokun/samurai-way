@@ -14,17 +14,9 @@ export interface IDialog {
   name: string;
 }
 
-export interface IDialogsData {
-  dialogsData: IDialog[];
-}
-
 export interface IMessage {
   id: number;
   message: string;
-}
-
-export interface IMessagesData {
-  messagesData: IMessage[];
 }
 
 // end: types for DialogsPage
@@ -39,10 +31,6 @@ export interface IPost {
   id: number;
   message: string;
   likesCount: number;
-}
-
-export interface IPostsData {
-  postsData: IPost[];
 }
 
 // end: types for ProfilePage

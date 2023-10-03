@@ -1,5 +1,7 @@
 import { IPost, IState } from './types';
-import { rerenderEntireTree } from '../render';
+
+let rerenderEntireTree = (state: IState) => {
+};
 
 export const state: IState = {
   dialogsPage: {
@@ -35,12 +37,16 @@ export const addPost = () => {
     message: state.profilePage.newPostText,
     likesCount: 0,
   };
-  rerenderEntireTree({ state });
+  rerenderEntireTree(state);
   state.profilePage.newPostText = '';
   state.profilePage.posts.push(newPost);
 };
 
 export const updateNewPostText = (newText: string) => {
   state.profilePage.newPostText = newText;
-  rerenderEntireTree({ state });
+  rerenderEntireTree(state);
+};
+
+export const subscribe = (observer: (state: IState) => void) => {
+  rerenderEntireTree = observer;
 };
