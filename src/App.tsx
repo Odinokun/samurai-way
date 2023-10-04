@@ -8,16 +8,15 @@ import { News } from './components/News/News';
 import { Music } from './components/Music/Music';
 import { Settings } from './components/Settings/Settings';
 
-import { IState } from './redux/types';
+import { IAction, IState } from './redux/types';
 import './App.css';
 
 interface IProps {
   state: IState;
-  addPost: (postText: string) => void;
-  updateNewPostText: (newText: string) => void;
+  dispatch: (action: IAction) => void;
 }
 
-export const App = ({ state, addPost, updateNewPostText }: IProps) => {
+export const App = ({ state, dispatch }: IProps) => {
   return (
     <div className="app-wrapper">
       <Header />
@@ -27,8 +26,7 @@ export const App = ({ state, addPost, updateNewPostText }: IProps) => {
           path="/profile"
           render={() => <Profile
             profilePage={state.profilePage}
-            addPost={addPost}
-            updateNewPostText={updateNewPostText}
+            dispatch={dispatch}
           />}
         />
         <Route

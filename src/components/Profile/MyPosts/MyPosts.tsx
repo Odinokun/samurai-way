@@ -2,33 +2,30 @@ import { createRef, FC } from 'react';
 
 import { Post } from './Post/Post';
 
-import { IPost } from '../../../redux/types';
+import { IAction, IPost } from '../../../redux/types';
 import s from './MyPosts.module.css';
 
 interface IProps {
   posts: IPost[];
   newPostText: string;
-  addPost: (postText: string) => void;
-  updateNewPostText: (newText: string) => void;
+  dispatch: (action: IAction) => void;
 }
 
 export const MyPosts: FC<IProps> = ({
   posts,
   newPostText,
-  addPost,
-  updateNewPostText,
+  dispatch,
 }) => {
   const postsElements = posts.map(post => <Post key={post.id} message={post.message} likesCount={post.likesCount} />);
   
   const newPostElement = createRef<HTMLTextAreaElement>();
   
   const addPostHandler = () => {
-    addPost(newPostText || '');
-    updateNewPostText('');
+    dispatch({ type: 'ADD-POST' });
   };
   
   const onPostChange = () => {
-    updateNewPostText(newPostElement.current!.value);
+    dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: newPostElement.current!.value });
   };
   
   return (
