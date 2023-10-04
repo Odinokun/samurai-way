@@ -2,7 +2,6 @@ import { FC } from 'react';
 import { MyPosts } from './MyPosts/MyPosts';
 import { ProfileInfo } from './MyPosts/Post/ProfileInfo/ProfileInfo';
 import { IProfilePage } from '../../redux/types';
-import { updateNewPostText } from '../../redux/state';
 
 interface IProps {
   profilePage: IProfilePage;
@@ -10,7 +9,7 @@ interface IProps {
   updateNewPostText: (newText: string) => void;
 }
 
-export const Profile: FC<IProps> = ({ profilePage, addPost }) => {
+export const Profile: FC<IProps> = ({ profilePage, addPost, updateNewPostText }) => {
   return (
     <div>
       <ProfileInfo />
