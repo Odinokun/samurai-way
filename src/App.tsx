@@ -8,12 +8,12 @@ import { News } from './components/News/News';
 import { Music } from './components/Music/Music';
 import { Settings } from './components/Settings/Settings';
 
-import { IAction, IState } from './redux/types';
+import { IActionsTypes, IState } from './redux/types';
 import './App.css';
 
 interface IProps {
   state: IState;
-  dispatch: (action: IAction) => void;
+  dispatch: (action: IActionsTypes) => void;
 }
 
 export const App = ({ state, dispatch }: IProps) => {

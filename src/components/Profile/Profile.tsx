@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { MyPosts } from './MyPosts/MyPosts';
 import { ProfileInfo } from './MyPosts/Post/ProfileInfo/ProfileInfo';
-import { IAction, IProfilePage } from '../../redux/types';
+import { IActionsTypes, IProfilePage } from '../../redux/types';
 
 interface IProps {
   profilePage: IProfilePage;
-  dispatch: (action: IAction) => void;
+  dispatch: (action: IActionsTypes) => void;
 }
 
 export const Profile: FC<IProps> = ({ profilePage, dispatch }) => {

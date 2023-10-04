@@ -1,17 +1,11 @@
+import { addPostAC, updateNewMessageBodyAC, updateNewPostTextAC } from './store';
+
 export interface IStore {
   _state: IState;
   getState: () => IState;
   _callSubscriber: (_state: IState) => void;
   subscribe: (observer: (state: IState) => void) => void;
-  dispatch: (action: IAction) => void;
-}
-
-export interface IAction {
-  type:
-    'ADD-POST' |
-    'UPDATE-NEW-POST-TEXT' |
-    'UPDATE-NEW-MESSAGE-BODY';
-  newText?: string;
+  dispatch: (action: IActionsTypes) => void;
 }
 
 export interface IState {
@@ -50,3 +44,10 @@ export interface IPost {
 }
 
 // end: types for ProfilePage
+
+// begin: types for actions
+export type IActionsTypes =
+  ReturnType<typeof addPostAC> |
+  ReturnType<typeof updateNewPostTextAC> |
+  ReturnType<typeof updateNewMessageBodyAC>;
+// end: types for actions
