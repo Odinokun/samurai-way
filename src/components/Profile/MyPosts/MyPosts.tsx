@@ -25,7 +25,10 @@ export const MyPosts: FC<IProps> = ({
   };
   
   const onPostChange = () => {
-    dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: newPostElement.current!.value });
+    dispatch({
+      type: 'UPDATE-NEW-POST-TEXT',
+      newText: newPostElement.current!.value,
+    });
   };
   
   return (

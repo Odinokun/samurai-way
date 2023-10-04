@@ -3,15 +3,12 @@ export interface IStore {
   getState: () => IState;
   _callSubscriber: (_state: IState) => void;
   subscribe: (observer: (state: IState) => void) => void;
-  dispatch: (action: IAction) => void;
-}
-
-export interface IAction {
-  type:
-    'ADD-POST' |
-    'UPDATE-NEW-POST-TEXT' |
-    'UPDATE-NEW-MESSAGE-BODY';
-  newText?: string;
+  dispatch: (
+    action:
+      IActionAddPost |
+      IActionUpdateNewPostText |
+      IActionUpdateNewMessageBody,
+  ) => void;
 }
 
 export interface IState {
@@ -50,3 +47,22 @@ export interface IPost {
 }
 
 // end: types for ProfilePage
+
+// begin: types for actions
+export type IAction = IActionAddPost | IActionUpdateNewPostText | IActionUpdateNewMessageBody;
+
+export interface IActionAddPost {
+  type: 'ADD-POST';
+}
+
+export interface IActionUpdateNewPostText {
+  type: 'UPDATE-NEW-POST-TEXT';
+  newText: string;
+}
+
+export interface IActionUpdateNewMessageBody {
+  type: 'UPDATE-NEW-MESSAGE-BODY';
+  newText: string;
+}
+
+// end: types for actions
