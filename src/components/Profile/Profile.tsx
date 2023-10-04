@@ -1,23 +1,21 @@
 import { FC } from 'react';
 import { MyPosts } from './MyPosts/MyPosts';
 import { ProfileInfo } from './MyPosts/Post/ProfileInfo/ProfileInfo';
-import { IProfilePage } from '../../redux/types';
+import { IAction, IProfilePage } from '../../redux/types';
 
 interface IProps {
   profilePage: IProfilePage;
-  addPost: (postText: string) => void;
-  updateNewPostText: (newText: string) => void;
+  dispatch: (action: IAction) => void;
 }
 
-export const Profile: FC<IProps> = ({ profilePage, addPost, updateNewPostText }) => {
+export const Profile: FC<IProps> = ({ profilePage, dispatch }) => {
   return (
     <div>
       <ProfileInfo />
       <MyPosts
         posts={profilePage.posts}
         newPostText={profilePage.newPostText}
-        addPost={addPost}
-        updateNewPostText={updateNewPostText}
+        dispatch={dispatch}
       />
     </div>
   );

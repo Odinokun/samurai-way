@@ -39,20 +39,27 @@ export const store: IStore = {
     this._callSubscriber = observer;
   },
   
-  addPost() {
-    const newPost: IPost = {
-      id: 5,
-      message: this._state.profilePage.newPostText,
-      likesCount: 0,
-    };
-    this._callSubscriber(this._state);
-    this._state.profilePage.newPostText = '';
-    this._state.profilePage.posts.push(newPost);
+  dispatch(action) {
+    if (action.type === 'ADD-POST') {
+      if (this._state.profilePage.newPostText.trim()) {
+        const newPost: IPost = {
+          id: 5,
+          message: this._state.profilePage.newPostText.trim(),
+          likesCount: 0,
+        };
+        this._callSubscriber(this._state);
+        this._state.profilePage.newPostText = '';
+        this._state.profilePage.posts.push(newPost);
+      }
+    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      if (action.newText) {
+        this._state.profilePage.newPostText = action.newText;
+        this._callSubscriber(this._state);
+      }
+    } else if (action.type === 'UPDATE-NEW-MESSAGE-BODY') {
+      // this._state.dialogsPage.newMessageBody = action.body;
+      this._callSubscriber(this._state);
+    }
   },
-  updateNewPostText(newText: string) {
-    this._state.profilePage.newPostText = newText;
-    this._callSubscriber(this._state);
-  },
-  
 };
 
