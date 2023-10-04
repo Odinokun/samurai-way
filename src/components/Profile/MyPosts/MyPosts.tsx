@@ -2,13 +2,14 @@ import { createRef, FC } from 'react';
 
 import { Post } from './Post/Post';
 
-import { IAction, IPost } from '../../../redux/types';
+import { IActionsTypes, IPost } from '../../../redux/types';
+import { addPostAC, updateNewPostTextAC } from '../../../redux/store';
 import s from './MyPosts.module.css';
 
 interface IProps {
   posts: IPost[];
   newPostText: string;
-  dispatch: (action: IAction) => void;
+  dispatch: (action: IActionsTypes) => void;
 }
 
 export const MyPosts: FC<IProps> = ({
@@ -17,18 +18,12 @@ export const MyPosts: FC<IProps> = ({
   dispatch,
 }) => {
   const postsElements = posts.map(post => <Post key={post.id} message={post.message} likesCount={post.likesCount} />);
-  
   const newPostElement = createRef<HTMLTextAreaElement>();
   
-  const addPostHandler = () => {
-    dispatch({ type: 'ADD-POST' });
-  };
-  
+  const addPostHandler = () => dispatch(addPostAC());
   const onPostChange = () => {
-    dispatch({
-      type: 'UPDATE-NEW-POST-TEXT',
-      newText: newPostElement.current!.value,
-    });
+    const action: IActionsTypes = updateNewPostTextAC(newPostElement.current!.value);
+    dispatch(action);
   };
   
   return (

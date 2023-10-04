@@ -1,5 +1,9 @@
 import { IPost, IState, IStore } from './types';
 
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
+
 export const store: IStore = {
   _state: {
     dialogsPage: {
@@ -39,7 +43,7 @@ export const store: IStore = {
   },
   
   dispatch(action) {
-    if (action.type === 'ADD-POST') {
+    if (action.type === ADD_POST) {
       if (this._state.profilePage.newPostText.trim()) {
         const newPost: IPost = {
           id: 5,
@@ -50,15 +54,28 @@ export const store: IStore = {
         this._state.profilePage.newPostText = '';
         this._state.profilePage.posts.push(newPost);
       }
-    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
       if (action.newText) {
         this._state.profilePage.newPostText = action.newText;
         this._callSubscriber(this._state);
       }
-    } else if (action.type === 'UPDATE-NEW-MESSAGE-BODY') {
+    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
       // this._state.dialogsPage.newMessageBody = action.body;
       this._callSubscriber(this._state);
     }
   },
 };
 
+export const addPostAC = () => (
+  { type: ADD_POST } as const
+);
+
+export const updateNewPostTextAC = (newText: string) => ({
+  type: UPDATE_NEW_POST_TEXT,
+  newText,
+} as const);
+
+export const updateNewMessageBodyAC = (body: string) => ({
+  type: UPDATE_NEW_MESSAGE_BODY,
+  body,
+} as const);
