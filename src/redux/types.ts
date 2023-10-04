@@ -1,3 +1,12 @@
+export interface IStore {
+  _state: IState;
+  getState: () => IState;
+  _callSubscriber: (_state: IState) => void;
+  addPost: () => void;
+  updateNewPostText: (newText: string) => void;
+  subscribe: (observer: (state: IState) => void) => void;
+}
+
 export interface IState {
   dialogsPage: IDialogsPage;
   profilePage: IProfilePage;
