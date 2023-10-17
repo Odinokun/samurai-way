@@ -1,4 +1,4 @@
-import { addPostAC, updateNewMessageBodyAC, updateNewPostTextAC } from './store';
+import { addPostAC, sendMessageAC, updateNewMessageBodyAC, updateNewPostTextAC } from './store';
 
 export interface IStore {
   _state: IState;
@@ -17,6 +17,7 @@ export interface IState {
 export interface IDialogsPage {
   dialogsData: IDialog[];
   messagesData: IMessage[];
+  newMessageBody: string;
 }
 
 export interface IDialog {
@@ -49,5 +50,6 @@ export interface IPost {
 export type IActionsTypes =
   ReturnType<typeof addPostAC> |
   ReturnType<typeof updateNewPostTextAC> |
-  ReturnType<typeof updateNewMessageBodyAC>;
+  ReturnType<typeof updateNewMessageBodyAC> |
+  ReturnType<typeof sendMessageAC>;
 // end: types for actions

@@ -2,7 +2,9 @@ import { IPost, IState, IStore } from './types';
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
+const SEND_MESSAGE = 'SEND-MESSAGE';
 
 export const store: IStore = {
   _state: {
@@ -21,6 +23,7 @@ export const store: IStore = {
         { id: 4, message: 'Yo' },
         { id: 5, message: 'Yo' },
       ],
+      newMessageBody: '',
     },
     profilePage: {
       posts: [
@@ -60,8 +63,15 @@ export const store: IStore = {
         this._callSubscriber(this._state);
       }
     } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-      // this._state.dialogsPage.newMessageBody = action.body;
+      this._state.dialogsPage.newMessageBody = action.body;
       this._callSubscriber(this._state);
+    } else if (action.type === SEND_MESSAGE) {
+      if (this._state.dialogsPage.newMessageBody.trim()) {
+        const body = this._state.dialogsPage.newMessageBody.trim();
+        this._state.dialogsPage.newMessageBody = '';
+        this._state.dialogsPage.messagesData.push({ id: 6, message: body });
+        this._callSubscriber(this._state);
+      }
     }
   },
 };
@@ -74,6 +84,10 @@ export const updateNewPostTextAC = (newText: string) => ({
   type: UPDATE_NEW_POST_TEXT,
   newText,
 } as const);
+
+export const sendMessageAC = () => (
+  { type: SEND_MESSAGE } as const
+);
 
 export const updateNewMessageBodyAC = (body: string) => ({
   type: UPDATE_NEW_MESSAGE_BODY,
