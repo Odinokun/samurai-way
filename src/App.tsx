@@ -31,7 +31,10 @@ export const App = ({ state, dispatch }: IProps) => {
         />
         <Route
           path="/dialogs"
-          render={() => <Dialogs dialogsPage={state.dialogsPage} />}
+          render={() => <Dialogs
+            dialogsPage={state.dialogsPage}
+            dispatch={dispatch}
+          />}
         />
         <Route path="/news" render={() => <News />} />
         <Route path="/music" render={() => <Music />} />

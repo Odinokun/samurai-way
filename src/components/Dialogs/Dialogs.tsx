@@ -1,16 +1,18 @@
-import { createRef, FC } from 'react';
+import { ChangeEvent, FC } from 'react';
 
 import { DialogItem } from './DialogItem/DialogItem';
 import { Message } from './Message/Message';
 
-import { IDialogsPage } from '../../redux/types';
+import { IActionsTypes, IDialogsPage } from '../../redux/types';
 import s from './Dialogs.module.css';
+import { sendMessageAC, updateNewMessageBodyAC } from '../../redux/store';
 
 interface IProps {
   dialogsPage: IDialogsPage;
+  dispatch: (action: IActionsTypes) => void;
 }
 
-export const Dialogs: FC<IProps> = ({ dialogsPage }) => {
+export const Dialogs: FC<IProps> = ({ dialogsPage, dispatch }) => {
   const dialogsElements = dialogsPage.dialogsData.map(dialog => (
     <DialogItem key={dialog.id} id={dialog.id} name={dialog.name} />
   ));
@@ -19,8 +21,9 @@ export const Dialogs: FC<IProps> = ({ dialogsPage }) => {
     <Message key={message.id} message={message.message} />
   ));
   
-  const newMessageElement = createRef<HTMLTextAreaElement>();
-  const addMessage = () => console.log(newMessageElement.current?.value);
+  const newMessageBody = dialogsPage.newMessageBody;
+  const addMessage = () => dispatch(sendMessageAC());
+  const onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => dispatch(updateNewMessageBodyAC(e.target.value));
   
   return (
     <div className={s.dialogs}>
@@ -28,7 +31,7 @@ export const Dialogs: FC<IProps> = ({ dialogsPage }) => {
       <div className={s.messages}>
         {messagesElements}
         <div>
-          <textarea ref={newMessageElement} placeholder="Enter your message"></textarea>
+          <textarea value={newMessageBody} onChange={onNewMessageChange} placeholder="Enter message" />
           <button onClick={addMessage}>Add new message</button>
         </div>
       </div>
